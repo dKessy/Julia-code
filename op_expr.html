@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style_2.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+
+        <!--Content before waves-->
+        <div class="inner-header flex">
+        <!--Just the logo.. Don't mind this-->
+            
+            <h1>𝐉𝐮𝐥𝐢𝐚</h1>
+            <div class="connexion">
+                <button>Créer Compte</button>
+                <button>Connexion</button>
+            </div>
+            
+        </div>
+        
+        <!--Waves Container-->
+        <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(37, 40, 57,0.2)" />
+        <use xlink:href="#gentle-wave" x="48" y="2" fill="rgba(37, 40, 57,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(37, 40, 57,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="#252839" />
+        </g>
+        
+        </svg>
+        
+        </div>
+        <!--Waves end--> 
+    </div>
+    <div class="middle">
+        <div class="contenu">
+            <section class="mb-5">
+                <h2 class="text-center">Cours : Opérateurs et Expressions en Julia</h2>
+    
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>Les opérateurs sont des symboles utilisés pour effectuer des opérations sur des valeurs. Voici les différents types d'opérateurs en Julia :</p>
+    
+                        <h4>1. Types d'Opérateurs en Julia</h4>
+                        <h5>a) Opérateurs Arithmétiques</h5>
+                        <p>Les opérateurs arithmétiques permettent de réaliser des calculs de base.</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Opérateur</th>
+                                    <th>Description</th>
+                                    <th>Exemple</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>+</td>
+                                    <td>Addition</td>
+                                    <td>5 + 3 renvoie 8</td>
+                                </tr>
+                                <tr>
+                                    <td>-</td>
+                                    <td>Soustraction</td>
+                                    <td>5 - 3 renvoie 2</td>
+                                </tr>
+                                <tr>
+                                    <td>*</td>
+                                    <td>Multiplication</td>
+                                    <td>5 * 3 renvoie 15</td>
+                                </tr>
+                                <tr>
+                                    <td>/</td>
+                                    <td>Division (résultat réel)</td>
+                                    <td>5 / 2 renvoie 2.5</td>
+                                </tr>
+                                <tr>
+                                    <td>÷</td>
+                                    <td>Division entière</td>
+                                    <td>5 ÷ 2 renvoie 2</td>
+                                </tr>
+                                <tr>
+                                    <td>%</td>
+                                    <td>Modulo (reste de division)</td>
+                                    <td>5 % 2 renvoie 1</td>
+                                </tr>
+                                <tr>
+                                    <td>^</td>
+                                    <td>Puissance</td>
+                                    <td>2 ^ 3 renvoie 8</td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                        <h5>b) Opérateurs de Comparaison</h5>
+                        <p>Les opérateurs de comparaison permettent de comparer des valeurs. Ils renvoient toujours un booléen (true ou false).</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Opérateur</th>
+                                    <th>Description</th>
+                                    <th>Exemple</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>==</td>
+                                    <td>Égalité</td>
+                                    <td>5 == 5 renvoie true</td>
+                                </tr>
+                                <tr>
+                                    <td>!=</td>
+                                    <td>Différent</td>
+                                    <td>5 != 3 renvoie true</td>
+                                </tr>
+                                <tr>
+                                    <td>></td>
+                                    <td>Supérieur</td>
+                                    <td>5 > 3 renvoie true</td>
+                                </tr>
+                                <tr>
+                                    <td><</td>
+                                    <td>Inférieur</td>
+                                    <td>5 < 3 renvoie false</td>
+                                </tr>
+                                <tr>
+                                    <td>>=</td>
+                                    <td>Supérieur ou égal</td>
+                                    <td>5 >= 5 renvoie true</td>
+                                </tr>
+                                <tr>
+                                    <td><=</td>
+                                    <td>Inférieur ou égal</td>
+                                    <td>5 <= 3 renvoie false</td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                        <h5>c) Opérateurs Logiques</h5>
+                        <p>Les opérateurs logiques permettent de combiner des expressions booléennes.</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Opérateur</th>
+                                    <th>Description</th>
+                                    <th>Exemple</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>&&</td>
+                                    <td>ET logique</td>
+                                    <td>(5 > 3) && (3 > 1) renvoie true</td>
+                                </tr>
+                                <tr>
+                                    <td>!</td>
+                                    <td>NON logique (négation)</td>
+                                    <td>!(5 > 3) renvoie false</td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                        <h4>2. Exemples d'Expressions en Julia</h4>
+                        <h5>Exemple 1 : Utilisation des opérateurs arithmétiques</h5>
+                        <pre><code>
+    a = 10
+    b = 3
+    
+    somme = a + b           # Résultat : 13
+    difference = a - b      # Résultat : 7
+    produit = a * b         # Résultat : 30
+    division = a / b        # Résultat : 3.333...
+    division_entiere = a ÷ b # Résultat : 3
+    reste = a % b           # Résultat : 1
+    puissance = a ^ b       # Résultat : 1000 (10 à la puissance 3)
+                        </code></pre>
+    
+                        <h5>Exemple 2 : Comparaison de valeurs</h5>
+                        <pre><code>
+    x = 7
+    y = 5
+    
+    println(x == y)         # Résultat : false
+    println(x != y)         # Résultat : true
+    println(x > y)          # Résultat : true
+    println(x <= y)         # Résultat : false
+                        </code></pre>
+    
+                        <h5>Exemple 3 : Opérateurs logiques</h5>
+                        <pre><code>
+    c = true
+    d = false
+    
+    println(c && d)         # Résultat : false
+    println(c || d)         # Résultat : true
+    println(!c)             # Résultat : false
+    println(!(c && d))      # Résultat : true
+                        </code></pre>
+    
+                        
+                    </div>
+                </div>
+            </section>
+    
+            
+            <section class="mb-5">
+                <h2 class="text-center">Exercice : Calcul des Opérations Arithmétiques</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>1. Créez deux variables <code>x</code> et <code>y</code> avec les valeurs 12 et 5.<br>
+                           2. Calculez et affichez :</p>
+                        <ul>
+                            <li>La somme de <code>x</code> et <code>y</code> dans une variable <code>somme</code>.</li>
+                            <li>La différence entre <code>x</code> et <code>y</code> dans une variable <code>difference</code>.</li>
+                            <li>Le produit dans <code>produit</code>.</li>
+                            <li>Le reste de la division entière dans <code>reste</code>.</li>
+                        </ul>
+            
+                        <textarea id="arithmetic-exercise" class="form-control" rows="5" placeholder="Écris ton code Julia ici..."></textarea>
+                        <button class="btn btn-success mt-3" onclick="runExercise('arithmetic-exercise')">Exécuter l'exercice</button>
+                        <pre id="arithmetic-output" class="bg-dark text-white p-3 rounded mt-3"></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-5">
+                <h2 class="text-center">Exercice : Comparaison de Nombres</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>Utilisez les mêmes variables <code>x</code> et <code>y</code> créées dans l'exercice précédent.<br>
+                           Affichez les résultats des comparaisons suivantes :</p>
+                        <ul>
+                            <li>x est-il égal à y ?</li>
+                            <li>x est-il supérieur ou égal à y ?</li>
+                            <li>y est-il inférieur à x ?</li>
+                        </ul>
+                        <p>Essayez d'inverser les valeurs de <code>x</code> et <code>y</code> et observez les résultats.</p>
+            
+                        <textarea id="comparison-exercise" class="form-control" rows="5" placeholder="Écris ton code Julia ici..."></textarea>
+                        <button class="btn btn-success mt-3" onclick="runExercise('comparison-exercise')">Exécuter l'exercice</button>
+                        <pre id="comparison-output" class="bg-dark text-white p-3 rounded mt-3"></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-5">
+                <h2 class="text-center">Exercice : Expressions Logiques</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>Déclarez deux variables <code>a</code> et <code>b</code> de types booléens avec les valeurs <code>true</code> et <code>false</code>.<br>
+                           Affichez les résultats des expressions suivantes :</p>
+                        <ul>
+                            <li><code>a && b</code> (ET logique)</li>
+                            <li><code>a || b</code> (OU logique)</li>
+                            <li><code>!a</code> (NON logique sur <code>a</code>)</li>
+                            <li><code>!(a && b)</code> (NON logique de l’ET)</li>
+                        </ul>
+            
+                        <textarea id="logical-exercise" class="form-control" rows="5" placeholder="Écris ton code Julia ici..."></textarea>
+                        <button class="btn btn-success mt-3" onclick="runExercise('logical-exercise')">Exécuter l'exercice</button>
+                        <pre id="logical-output" class="bg-dark text-white p-3 rounded mt-3"></pre>
+                    </div>
+                </div>
+            </section>
+
+    
+
+        </div>
+        
+        
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style_2.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+
+        <!--Content before waves-->
+        <div class="inner-header flex">
+        <!--Just the logo.. Don't mind this-->
+            
+            <h1>𝐉𝐮𝐥𝐢𝐚</h1>
+            <div class="connexion">
+                <button>Créer Compte</button>
+                <button>Connexion</button>
+            </div>
+            
+        </div>
+        
+        <!--Waves Container-->
+        <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(37, 40, 57,0.2)" />
+        <use xlink:href="#gentle-wave" x="48" y="2" fill="rgba(37, 40, 57,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(37, 40, 57,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="#252839" />
+        </g>
+        
+        </svg>
+        
+        </div>
+        <!--Waves end--> 
+    </div>
+    <div class="middle">
+        <div class="contenu">
+            <section class="mb-5">
+                <h2 class="text-center">Les Fonctions en Julia</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <h3>1. Définition de Fonction en Julia</h3>
+                        <p>En Julia, une fonction se définit à l'aide du mot-clé <code>function</code>, suivi d'un nom de fonction, d'une liste d'arguments entre parenthèses, et du corps de la fonction. La fonction se termine par <code>end</code>.</p>
+            
+                        <pre><code>function nom_de_fonction(argument1, argument2, ...)
+                # Corps de la fonction
+                return resultat
+            end</code></pre>
+            
+                        <ul>
+                            <li><strong>nom_de_fonction</strong> : le nom donné à la fonction pour l’appeler.</li>
+                            <li><strong>arguments</strong> : valeurs d'entrée nécessaires pour le traitement de la fonction.</li>
+                            <li><strong>return</strong> : mot-clé permettant de renvoyer un résultat. Si omis, la fonction retourne la dernière expression évaluée.</li>
+                        </ul>
+            
+                        <h4>Exemple de Fonction Simple</h4>
+                        <pre><code>function addition(a, b)
+                return a + b
+            end
+            
+            resultat = addition(3, 5)  # Résultat : 8
+            println(resultat)</code></pre>
+                        <p>Dans cet exemple, la fonction <code>addition</code> prend deux paramètres <code>a</code> et <code>b</code>, calcule leur somme et renvoie le résultat.</p>
+                    </div>
+                </div>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <h3>2. Fonctions sans Arguments</h3>
+                        <p>Les fonctions en Julia peuvent également ne prendre aucun argument. Elles réalisent alors des tâches prédéfinies sans nécessiter de données d'entrée.</p>
+            
+                        <pre><code>function saluer()
+                println("Bonjour !")
+            end
+            
+            saluer()  # Affiche : Bonjour !</code></pre>
+                    </div>
+                </div>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <h3>3. Valeurs de Retour</h3>
+                        <p>Le mot-clé <code>return</code> est optionnel. En son absence, Julia retourne la dernière expression calculée.</p>
+            
+                        <pre><code>function multiplier_par_deux(x)
+                x * 2  # Retour implicite de cette expression
+            end
+            
+            println(multiplier_par_deux(5))  # Résultat : 10</code></pre>
+                    </div>
+                </div>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <h3>4. Fonctions avec Valeurs Par Défaut</h3>
+                        <p>Il est possible de définir des valeurs par défaut pour les arguments d'une fonction. En cas d'absence de valeur lors de l'appel, Julia utilise la valeur par défaut.</p>
+            
+                        <pre><code>function bonjour(nom="anonyme")
+                println("Bonjour, $nom!")
+            end
+            
+            bonjour("Alice")  # Affiche : Bonjour, Alice!
+            bonjour()         # Affiche : Bonjour, anonyme!</code></pre>
+                    </div>
+                </div>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <h3>5. Fonctions Anonymes</h3>
+                        <p>Les fonctions anonymes n'ont pas de nom et sont souvent utilisées pour des tâches simples. La syntaxe est <code>arguments -> expression</code>.</p>
+            
+                        <pre><code>addition = (a, b) -> a + b
+            println(addition(3, 7))  # Résultat : 10</code></pre>
+                    </div>
+                </div>
+            
+                <h3>Exemples Pratiques</h3>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <h4>Exemple 1 : Fonction de Calcul de l'Aire d'un Rectangle</h4>
+                        <pre><code>function aire_rectangle(longueur, largeur)
+                return longueur * largeur
+            end
+            
+            aire = aire_rectangle(5, 3)  # Résultat : 15
+            println("L'aire est : $aire")</code></pre>
+                    </div>
+                </div>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <h4>Exemple 2 : Fonction de Salutation avec Valeur Par Défaut</h4>
+                        <pre><code>function saluer(nom="Inconnu")
+                println("Bonjour, $nom!")
+            end
+            
+            saluer("Marie")  # Affiche : Bonjour, Marie!
+            saluer()         # Affiche : Bonjour, Inconnu!</code></pre>
+                    </div>
+                </div>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <h4>Exemple 3 : Fonction pour Vérifier la Parité d'un Nombre</h4>
+                        <pre><code>function est_pair(x)
+                return x % 2 == 0
+            end
+            
+            println(est_pair(4))  # Résultat : true
+            println(est_pair(7))  # Résultat : false</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+    
+            <section class="mb-5">
+                <h2 class="text-center">Exercice 1 : Calcul de la Moyenne</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>Créez une fonction nommée <code>moyenne</code> qui prend deux nombres en arguments et renvoie leur moyenne.<br>
+                           Testez la fonction avec différents nombres, par exemple <code>moyenne(10, 20)</code> devrait renvoyer 15.</p>
+            
+                        <textarea id="moyenne-exercise" class="form-control" rows="5" placeholder="Écris ton code Julia ici..."></textarea>
+                        <button class="btn btn-success mt-3" onclick="runExercise('moyenne-exercise')">Exécuter l'exercice</button>
+                        <pre id="moyenne-output" class="bg-dark text-white p-3 rounded mt-3"></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-5">
+                <h2 class="text-center">Exercice 2 : Calcul du Carré</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>Définissez une fonction nommée <code>carre</code> qui prend un nombre et renvoie son carré.<br>
+                           Testez la fonction avec plusieurs valeurs, par exemple <code>carre(5)</code> devrait renvoyer 25.</p>
+            
+                        <textarea id="carre-exercise" class="form-control" rows="5" placeholder="Écris ton code Julia ici..."></textarea>
+                        <button class="btn btn-success mt-3" onclick="runExercise('carre-exercise')">Exécuter l'exercice</button>
+                        <pre id="carre-output" class="bg-dark text-white p-3 rounded mt-3"></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-5">
+                <h2 class="text-center">Exercice 3 : Présentation avec Valeur Par Défaut</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>Écrivez une fonction nommée <code>presentation</code> qui prend deux arguments : <code>nom</code> et <code>age</code>.<br>
+                           Donnez une valeur par défaut à <code>age</code> (par exemple 18).<br>
+                           La fonction doit afficher "Je m'appelle [nom] et j'ai [age] ans.".<br>
+                           Testez la fonction avec et sans l'argument <code>age</code>.</p>
+            
+                        <textarea id="presentation-exercise" class="form-control" rows="5" placeholder="Écris ton code Julia ici..."></textarea>
+                        <button class="btn btn-success mt-3" onclick="runExercise('presentation-exercise')">Exécuter l'exercice</button>
+                        <pre id="presentation-output" class="bg-dark text-white p-3 rounded mt-3"></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-5">
+                <h2 class="text-center">Exercice 4 : Vérification du Signe d'un Nombre</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>Créez une fonction <code>verifier_signe</code> qui prend un nombre en argument et :<br>
+                           - Affiche "Le nombre est positif" si le nombre est supérieur à 0.<br>
+                           - Affiche "Le nombre est négatif" si le nombre est inférieur à 0.<br>
+                           - Affiche "Le nombre est zéro" si le nombre est égal à 0.<br>
+                           Testez la fonction avec différentes valeurs (positif, négatif, zéro).</p>
+            
+                        <textarea id="signe-exercise" class="form-control" rows="5" placeholder="Écris ton code Julia ici..."></textarea>
+                        <button class="btn btn-success mt-3" onclick="runExercise('signe-exercise')">Exécuter l'exercice</button>
+                        <pre id="signe-output" class="bg-dark text-white p-3 rounded mt-3"></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-5">
+                <h2 class="text-center">Exercice 5 : Fonction Anonyme de Multiplication</h2>
+            
+                <div class="card my-4 shadow-sm">
+                    <div class="card-body">
+                        <p>Créez une fonction anonyme qui prend deux nombres en arguments et retourne leur produit.<br>
+                           Utilisez la fonction pour calculer le produit de <code>6</code> et <code>7</code>.</p>
+            
+                        <textarea id="anon-multiplication-exercise" class="form-control" rows="5" placeholder="Écris ton code Julia ici..."></textarea>
+                        <button class="btn btn-success mt-3" onclick="runExercise('anon-multiplication-exercise')">Exécuter l'exercice</button>
+                        <pre id="anon-multiplication-output" class="bg-dark text-white p-3 rounded mt-3"></pre>
+                    </div>
+                </div>
+            </section>
+
+    
+
+        </div>
+        
+        
+    </div>
+    
+    
+</body>
+</html>
