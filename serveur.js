@@ -8,6 +8,26 @@ const port = 3000;
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/type_variable', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'variable.html'));
+});
+
+app.get('/operateur_expression', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'op_expr.html'));
+});
+
+app.get('/condition_boucle', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'condi_bouc.html'));
+});
+
+app.get('/fonction', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'fonct.html'));
+});
+
 
 app.post('/run-julia', (req, res) => {
     const codeJulia = req.body.code;
