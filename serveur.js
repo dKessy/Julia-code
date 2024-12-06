@@ -6,11 +6,17 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
-app.use(express.static('public'));
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
 
 app.get('/type_variable', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'variable.html'));
@@ -26,6 +32,23 @@ app.get('/condition_boucle', (req, res) => {
 
 app.get('/fonction', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'fonct.html'));
+});
+app.use(express.static('public'));
+
+app.post('/register', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // Simule le traitement des données (par exemple, stockage en base de données)
+    console.log('Nouvelle inscription :', { email, password });
+
+    // Réponse au client
+    res.send(`
+        <h1>Inscription réussie</h1>
+        <p>Votre adresse e-mail : ${email}</p>
+        <p>Votre mot de passe (non sécurisé !) : ${password}</p>
+        <a href="/">Retour à l'accueil</a>
+    `);
 });
 
 
