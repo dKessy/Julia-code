@@ -5,17 +5,76 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = 3000;
+const session = require('express-session');
+
+app.use(session({
+    secret: 'blalalalalalalala', // clé sécurisée
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Utilise secure: true si HTTPS est activé
+}));
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    const isLoggedIn = req.session.user ? true : false;
+
+    fs.readFile(path.join(__dirname, 'public', 'index.html'), 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Erreur lors du chargement de la page.');
+        }
+
+        
+        const userContent = isLoggedIn
+            ? `
+                <div class="user-info">
+                    <img src="${req.session.user.avatar}" alt="Avatar" class="user-avatar">
+                    <span>Bienvenue, ${req.session.user.name}</span>
+                    <a href="/logout"><button>Déconnexion</button></a>
+                </div>
+            `
+            : `
+                <div class="connexion">
+                    <button>Créer Compte</button>
+                    <a href="/login"><button>Connexion</button></a>
+                </div>
+            `;
+
+        
+        const updatedPage = data.replace('{{userContent}}', userContent);
+        res.send(updatedPage);
+    });
 });
+
 
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+   
+    if (email === "test@example.com" && password === "password123") {
+        req.session.user = {
+            email: email,
+            name: "Utilisateur Test",
+            avatar: "https://via.placeholder.com/50" 
+        };
+        res.redirect('/');
+    } else {
+        res.status(401).send('Identifiants invalides');
+    }
+});
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).send("Erreur lors de la déconnexion.");
+        }
+        res.redirect('/');
+    });
+});
+
 
 
 app.get('/type_variable', (req, res) => {
@@ -39,7 +98,7 @@ app.post('/register', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    // Simule le traitement des données (par exemple, stockage en base de données)
+    
     console.log('Nouvelle inscription :', { email, password });
 
     // Réponse au client

@@ -16,7 +16,10 @@ h1 {
   color: #01fe87;
 }
 
-
+.link-header {
+  text-decoration: none; /* Supprime le soulignement */
+  color: inherit; /* Conserve la couleur du texte du parent */
+}
 .header {
   position:relative;
   text-align:center;

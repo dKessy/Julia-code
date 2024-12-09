@@ -14,7 +14,7 @@
         <div class="inner-header flex">
         <!--Just the logo.. Don't mind this-->
             
-            <h1>𝐉𝐮𝐥𝐢𝐚</h1>
+            <h1><a href="/" class="link-header">𝐉𝐮𝐥𝐢𝐚</a></h1>
             <div class="connexion">
                 <button>Créer Compte</button>
                 <button>Connexion</button>
@@ -45,7 +45,7 @@
         <div class="contenu">
             <div class="container mt-5">
                 <h2 class="text-center mb-4">Inscription</h2>
-                <form action="/register" method="post">
+                <form action="/login" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Adresse e-mail</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Votre e-mail" required>
@@ -64,21 +64,6 @@
         
         
     </div>
-    <script>
-        function checkAnswers() {
-            let score = 0;
-
-            // Vérification des réponses
-            if (document.getElementById("q1-a").checked) score++;
-            if (document.getElementById("q2-c").checked) score++;
-            if (document.getElementById("q3-b").checked) score++;
-            if (document.getElementById("q4-d").checked) score++;
-            if (document.getElementById("q5-b").checked) score++;
-
-            // Affichage du résultat
-            document.getElementById("quiz-result").innerHTML = "Vous avez " + score + " bonnes réponses sur 5.";
-        }
-    </script>
     
 </body>
 </html>
