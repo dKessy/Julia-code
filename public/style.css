@@ -39,6 +39,26 @@ h1 {
   position: absolute; /* Positionnement absolu pour placer la barre dans le coin supérieur droit */
   right: 20px; /* Espace à droite */
   top: 40px; /* Espace en haut */
+  text-decoration: none;
+
+}
+.connexion a{
+  text-decoration: none;
+  color: #fff;
+
+}
+.connexion button{
+  padding: 10px;
+  background-color: #31344b;
+  transition: background-color 0.3s;
+  color: aliceblue;
+  border-radius: 5px;
+  border:0px ;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.connexion button:hover {
+  background-color: #01fe87;;
 }
 .user-info {
   display: flex;
@@ -204,4 +224,8 @@ canvas {
 .link-header {
   text-decoration: none; /* Supprime le soulignement */
   color: inherit; /* Conserve la couleur du texte du parent */
+}
+.section_point{
+  background: #343852;
+
 }

@@ -30,23 +30,80 @@ app.get('/', (req, res) => {
             ? `
                 <div class="user-info">
                     <img src="${req.session.user.avatar}" alt="Avatar" class="user-avatar">
-                    <span>Bienvenue, ${req.session.user.name}</span>
+                    <span>Bienvenue, ${req.session.user.email}</span>
                     <a href="/logout"><button>Déconnexion</button></a>
                 </div>
             `
             : `
                 <div class="connexion">
-                    <button>Créer Compte</button>
-                    <a href="/login"><button>Connexion</button></a>
+                    <a href="/login"><button>Créer Compte</a></button>
+                    <a href="/login"><button>Connexion</a></button>
                 </div>
             `;
+        const userGraphContent = isLoggedIn
+        ? `
+            <div class="conteneur_radar">
 
+                <canvas id="barCanvas" aria-label="chart" role="img"></canvas>
+            </div>
+            <div class="section_point">
+                <h2>Système de points</h2>
+                <p>Variable: <span id="points-variable">0</span></p>
+                <p>Opérateur et expression: <span id="points-operator">0</span></p>
+                <p>Condition et boucle: <span id="points-condition">0</span></p>
+                <p>Fonction: <span id="points-function">0</span></p>
+                
+                <!-- Boutons pour ajouter des points (exemple) -->
+                <button onclick="updateUserPoints(${req.session.user.email}, 'variable', 10)">+10 Points Variable</button>
+                <button onclick="updateUserPoints(${req.session.user.email}, 'operator', 10)">+10 Points Opérateur</button>
+                <button onclick="updateUserPoints(${req.session.user.email}, 'condition', 10)">+10 Points Condition</button>
+                <button onclick="updateUserPoints(${req.session.user.email}, 'function', 10)">+10 Points Fonction</button>
+            </div>
+          `
+        : `
+            
+        `;
         
-        const updatedPage = data.replace('{{userContent}}', userContent);
+        const updatedPage = data
+        .replace('{{userContent}}', userContent)
+        .replace('{{userGraphContent}}', userGraphContent);
         res.send(updatedPage);
     });
 });
+const users = {
+    // Exemple d'utilisateur par défaut
+    "test@example.com": {
+        password: "password123", // MDP en clair pour simplifier (à ne jamais faire en production)
+        points: {
+            variable: 0,
+            operator: 0,
+            condition: 0,
+            function: 0,
+        },
+    },
+};
 
+app.get('/points', (req, res) => {
+    const email = req.query.email;
+
+    if (users[email]) {
+        res.send(users[email].points);
+    } else {
+        res.status(404).send('Utilisateur non trouvé.');
+    }
+});
+
+// Route pour mettre à jour les points d'un utilisateur
+app.post('/update-points', (req, res) => {
+    const { email, subject, points } = req.body;
+
+    if (users[email]) {
+        users[email].points[subject] += points;
+        res.send(users[email].points);
+    } else {
+        res.status(404).send('Utilisateur non trouvé.');
+    }
+});
 
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
