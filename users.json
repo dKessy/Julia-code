@@ -1,0 +1,27 @@
+[
+  {
+    "email": "test@example.com",
+    "password": "motdepasse123",
+    "avatar": "https://via.placeholder.com/50",
+    "nom": "Diane Martin",
+    "points": {
+      "variable": 0,
+      "operator": 0,
+      "condition": 0,
+      "function": 0
+    }
+  },
+  {
+    "email": "user5@example.com",
+    "password": "motdepasse123",
+    "avatar": "https://via.placeholder.com/50",
+    "nom": "Éric Dupuis",
+    "points": {
+      "variable": 0,
+      "operator": 0,
+      "condition": 0,
+      "function": 0
+    }
+  }
+
+]

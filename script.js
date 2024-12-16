@@ -21,12 +21,12 @@ app.use(session({
 
 
 
-const users = {
-    "test@example.com": {
-        password: "motdepasse123",
-        points: { variable: 0, operator: 0, condition: 0, function: 0 },
-    },
-};
+//const users = {
+//    "test@example.com": {
+ //       password: "motdepasse123",
+ //       points: { variable: 0, operator: 0, condition: 0, function: 0 },
+//    },
+//};"
 
 
 app.get('/', (req, res) => {
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
             ? `
                 <div class="user-info">
                     <img src="${req.session.user.avatar}" alt="Avatar" class="user-avatar">
-                    <span>Bienvenue, ${req.session.user.email}</span>
+                    <span>Bienvenue, ${req.session.user.nom}</span>
                     <a href="/logout"><button>Déconnexion</button></a>
                 </div>
             `
@@ -111,16 +111,31 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
-    if (email in users && users[email].password === password) {
-        req.session.user = {
-            email,
-            avatar: "https://via.placeholder.com/50"
-        };
-        res.redirect('/');
-    } else {
-        res.status(401).send('Identifiants invalides');
-    }
+    fs.readFile('users.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error("Erreur lors de la lecture du fichier JSON :", err);
+            return res.status(500).send('Erreur serveur.');
+        }
+
+        const users = JSON.parse(data);
+
+        const utilisateur = users.find(user => user.email === email && user.password === password);
+
+        if (utilisateur) {
+        
+            req.session.user = utilisateur;
+
+            console.log("Utilisateur authentifié :", req.session.user);
+            console.log('Connexion réussie.');
+            res.redirect('/');
+            
+        } else {
+        
+            return res.status(401).send('Email ou nom incorrect.');
+        }
+    });
 });
+
 
 app.get('/logout', (req, res) => {
     req.session.destroy(err => {
@@ -135,6 +150,52 @@ app.get('/sign', (req, res) => {
             return res.status(500).send('Erreur lors du chargement de la page d\'inscription.');
         }
         res.send(data);
+    });
+});
+app.post('/sign', (req, res) => {
+    const { email, password,  nom } = req.body;
+    
+    if (!email || !password || !nom) {
+        return res.status(400).send('Tous les champs doivent être remplis.');
+    }
+
+    const fichier = 'users.json';
+
+    
+    fs.readFile(fichier, 'utf8', (err, data) => {
+        let users = [];
+
+        if (!err && data.trim().length > 0) {
+            users = JSON.parse(data);
+        } else if (err && err.code !== 'ENOENT') {
+            console.error("Erreur lors de la lecture du fichier JSON :", err);
+            return res.status(500).send('Erreur serveur.');
+        }
+
+        const utilisateurExistant = users.find(user => user.email === email);
+        if (utilisateurExistant) {
+            return res.status(409).send('Un utilisateur avec cet email existe déjà.');
+        }
+
+        const nouvelUtilisateur = {
+            id: users.length + 1,
+            email: email,
+            password: password,
+            avatar: "https://via.placeholder.com/50",
+            nom: nom
+        };
+        users.push(nouvelUtilisateur);
+
+        fs.writeFile(fichier, JSON.stringify(users, null, 2), (err) => {
+            if (err) {
+                console.error("Erreur lors de la sauvegarde du fichier JSON :", err);
+                r
+                return res.status(500).send('Erreur lors de l\'enregistrement.');
+            }
+
+            console.log("Nouvel utilisateur enregistré :", nouvelUtilisateur);
+            res.redirect('/login');
+        });
     });
 });
 
@@ -176,5 +237,6 @@ app.post('/run-julia', (req, res) => {
         });
     });
 });
+
 
 module.exports = app;
