@@ -19,7 +19,7 @@ function runExercise(id) {
     });
 }
 
-const barCanvas = document.getElementById("barCanvas");
+/*const barCanvas = document.getElementById("barCanvas");
 
 const barChart = new Chart(barCanvas, {
     type: "radar",
@@ -72,20 +72,20 @@ const barChart = new Chart(barCanvas, {
             }
         }
     }
-});
+});*/
 
 // Fonction pour récupérer les points de l'utilisateur
-function getUserPoints(email) {
-    fetch(`/points?email=${encodeURIComponent(email)}`)
-        .then((response) => response.json())
-        .then((data) => {
-            console.log('Points de l’utilisateur:', data);
-            updatePointsDisplay(data);
-        })
-        .catch((error) => {
-            console.error('Erreur lors de la récupération des points:', error);
-        });
-}
+//function getUserPoints(email) {
+//    fetch(`/points?email=${encodeURIComponent(email)}`)
+//        .then((response) => response.json())
+//        .then((data) => {
+//            console.log('Points de l’utilisateur:', data);
+//            updatePointsDisplay(data);
+//        })
+//        .catch((error) => {
+//            console.error('Erreur lors de la récupération des points:', error);
+ //       });
+//}
 
 // Fonction pour mettre à jour les points d'un sujet
 function updateUserPoints(email, subject, points) {

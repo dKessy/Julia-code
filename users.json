@@ -5,10 +5,10 @@
     "avatar": "https://via.placeholder.com/50",
     "nom": "Diane Martin",
     "points": {
-      "variable": 0,
-      "operator": 0,
-      "condition": 0,
-      "function": 0
+      "variable": 60,
+      "operator": 50,
+      "condition": 90,
+      "function": 30
     }
   },
   {
