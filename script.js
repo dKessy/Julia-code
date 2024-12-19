@@ -136,6 +136,15 @@ app.get('/', (req, res) => {
                                 }
                             }
                         });
+                        function updateGraphe(data) {
+                            barChart.data.datasets[0].data = [
+                                data.variable,
+                                data.operator,
+                                data.condition,
+                                data.function
+                            ];
+                            barChart.update(); // Mettre à jour le graphique
+                        }
                     </script>
                     <div class="section_point">
                         <h2>Système de points</h2>

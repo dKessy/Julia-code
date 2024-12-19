@@ -5,10 +5,10 @@
     "avatar": "https://via.placeholder.com/50",
     "nom": "Diane Martin",
     "points": {
-      "variable": 60,
-      "operator": 50,
+      "variable": 100,
+      "operator": 70,
       "condition": 90,
-      "function": 30
+      "function": 70
     }
   },
   {
@@ -17,11 +17,10 @@
     "avatar": "https://via.placeholder.com/50",
     "nom": "Éric Dupuis",
     "points": {
-      "variable": 0,
-      "operator": 0,
-      "condition": 0,
-      "function": 0
+      "variable": 30,
+      "operator": 30,
+      "condition": 10,
+      "function": 40
     }
   }
-
 ]

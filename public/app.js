@@ -98,6 +98,7 @@ function updateUserPoints(email, subject, points) {
         .then((data) => {
             console.log('Points mis à jour:', data);
             updatePointsDisplay(data);
+            updateGraphe(data);
         })
         .catch((error) => {
             console.error('Erreur lors de la mise à jour des points:', error);
